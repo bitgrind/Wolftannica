@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.kstedman.mathapplication.ui.MainActivity">
+
+    <ImageView
+        android:id="@+id/bgView"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/mathbg" />
+
+    <Button
+        android:id="@+id/solveEquationButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Find Solution!"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="149dp"
+        android:layout_below="@+id/inputEquation"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="34dp" />
+
+    <EditText
+        android:id="@+id/inputEquation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/pageTitle"
+        android:layout_marginTop="62dp"
+        android:background="#ffffff"
+        android:hint="Ask Any Question"
+        android:paddingBottom="20dp"
+        android:paddingLeft="40dp"
+        android:paddingRight="40dp"
+        android:paddingTop="20dp"
+        android:textAlignment="center"
+        tools:layout_editor_absoluteX="131dp"
+        tools:layout_editor_absoluteY="72dp" />
+
+    <TextView
+        android:id="@+id/pageTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="#99FFFFFF"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="WOLFTannICa"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textSize="50sp" />
+
+    <Button
+        android:id="@+id/aboutButton"
+        android:layout_width="98sp"
+        android:layout_height="wrap_content"
+        android:text="About"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@+id/contactButton"
+        android:layout_toStartOf="@+id/contactButton" />
+
+    <Button
+        android:id="@+id/convertButton"
+        android:layout_width="98sp"
+        android:layout_height="wrap_content"
+        android:text="Convert"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@+id/aboutButton"
+        android:layout_toStartOf="@+id/aboutButton" />
+
+    <Button
+        android:id="@+id/solveButton"
+        android:layout_width="98sp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@+id/convertButton"
+        android:layout_toStartOf="@+id/convertButton"
+        android:text="Solvr" />
+
+    <Button
+        android:id="@+id/contactButton"
+        android:layout_width="98sp"
+        android:layout_height="wrap_content"
+        android:text="Contact"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+</RelativeLayout>

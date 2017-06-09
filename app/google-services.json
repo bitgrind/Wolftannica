@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "978496836211",
+    "firebase_url": "https://wolftannica.firebaseio.com",
+    "project_id": "wolftannica",
+    "storage_bucket": "wolftannica.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:978496836211:android:2c14ceab467e111c",
+        "android_client_info": {
+          "package_name": "com.example.kstedman.mathapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "978496836211-bb11pdcslphqff1ef22fuu9cqbhd9mto.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.kstedman.mathapplication",
+            "certificate_hash": "460dfde5deb0073b07f5ff24788e9825d8ef7dc5"
+          }
+        },
+        {
+          "client_id": "978496836211-iet8eltnv9mgmnk5a4rvbjcidkmal2id.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD58jZKWSe-tOqxtxxOnbphW3gFxPAtAy4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "978496836211-iet8eltnv9mgmnk5a4rvbjcidkmal2id.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
