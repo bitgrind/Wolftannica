@@ -32,6 +32,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Bind(R.id.solveButton) Button mSolveButton;
     @Bind(R.id.inputEquation) TextView mInputEquation;
 
+    @Bind(R.id.saveSolutionButton) Button mSavedSolutionButton;
+
     private TextView mPageTitle;
 
 //    private SharedPreferences mSharedPreference;
@@ -72,10 +74,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         mPageTitle = (TextView) findViewById(R.id.pageTitle);
         Typeface leixoFont = Typeface.createFromAsset(getAssets(), "fonts/leixo.ttf");
+
+        mPageTitle.setTypeface(leixoFont);
+        mSolveEquationButton.setOnClickListener(this);
+        mAboutButton.setOnClickListener(this);
+        mContactButton.setOnClickListener(this);
+        mConvertButton.setOnClickListener(this);
+        mSolveButton.setOnClickListener(this);
+        mSavedSolutionButton.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
+        Log.v("MainActivity Click", v.toString());
+        Log.v("PrefTopicKey", WolframConstants.PREFERENCES_TOPIC_KEY);
+
         if(v == mSolveEquationButton) {
             String mathEquation = mInputEquation.getText().toString();
 
@@ -107,6 +120,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         if(v == mSolveButton) {
             Intent intent = new Intent(MainActivity.this, MainActivity.class);
+            startActivity(intent);
+        }
+
+        if(v == mSavedSolutionButton) {
+            Intent intent = new Intent(MainActivity.this, SavedResponseListActivity.class);
             startActivity(intent);
         }
     }

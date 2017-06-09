@@ -52,7 +52,7 @@ public class WolframListAdapter extends RecyclerView.Adapter<WolframListAdapter.
     public class WolframViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         @Bind(R.id.solveValueView) TextView mSolveValue;
         @Bind(R.id.solveTitleView) TextView mSolveTitle;
-        @Bind(R.id.solveImage) ImageView mSolveImage;
+        @Bind(R.id.solveImageView) ImageView mSolveImage;
 
         private Context mContext;
 
