@@ -8,8 +8,11 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.kstedman.mathapplication.R;
 import com.example.kstedman.mathapplication.WolframConstants;
@@ -17,6 +20,8 @@ import com.example.kstedman.mathapplication.adapters.WolframCustomAdapter;
 import com.example.kstedman.mathapplication.adapters.WolframListAdapter;
 import com.example.kstedman.mathapplication.models.WolframResponseModel;
 import com.example.kstedman.mathapplication.services.WolframService;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -27,6 +32,8 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
+import static java.security.AccessController.getContext;
+
 public class SolveActivity extends AppCompatActivity {
     public static final String TAG = SolveActivity.class.getSimpleName();
 
@@ -35,6 +42,7 @@ public class SolveActivity extends AppCompatActivity {
     private String mSearchedTopic;
 
     @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
+    @Bind(R.id.saveSolutionButton) Button mSaveSolution;
 
     private WolframListAdapter mAdapter;
     public ArrayList<WolframResponseModel> mResults = new ArrayList<>();
@@ -45,6 +53,8 @@ public class SolveActivity extends AppCompatActivity {
         setContentView(R.layout.activity_solve);
         ButterKnife.bind(this);
 
+        mSaveSolution = (Button) findViewById(R.id.saveSolutionButton);
+
         Intent intent = getIntent();
         String equation = intent.getStringExtra("question");
 
@@ -52,6 +62,16 @@ public class SolveActivity extends AppCompatActivity {
 //        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 //        mRecentTopic = mSharedPreferences.getString(WolframConstants.PREFERENCES_TOPIC_KEY, null);
 //        Log.v("SetPrefTopicKey", mRecentTopic);
+
+        mSaveSolution.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("SolveActivity","Add to Firebase");
+                DatabaseReference restaurantRef = FirebaseDatabase.getInstance().getReference(WolframConstants.FIREBASE_CHILD_QUESTIONS);
+                restaurantRef.push().setValue("saveQuestionModelHere");
+//                Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void getSolutions(String questionEquation, String questionTopic){

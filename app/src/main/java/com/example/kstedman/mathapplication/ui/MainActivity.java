@@ -49,7 +49,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mSearchTopicReferenceListener = mSearchedTopicReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                Log.d("MainValueEventChange", "onChanged Triggered" + dataSnapshot);
                 for(DataSnapshot topicSnapshot : dataSnapshot.getChildren()){
                     String equation = topicSnapshot.getValue().toString();
                     Log.d("TopicUpdated", equation);
@@ -73,20 +72,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         mPageTitle = (TextView) findViewById(R.id.pageTitle);
         Typeface leixoFont = Typeface.createFromAsset(getAssets(), "fonts/leixo.ttf");
-
-        mPageTitle.setTypeface(leixoFont);
-        mSolveEquationButton.setOnClickListener(this);
-        mAboutButton.setOnClickListener(this);
-        mContactButton.setOnClickListener(this);
-        mConvertButton.setOnClickListener(this);
-        mSolveButton.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
-        Log.v("MainActivity Click", v.toString());
-        Log.v("PrefTopicKey", WolframConstants.PREFERENCES_TOPIC_KEY);
-
         if(v == mSolveEquationButton) {
             String mathEquation = mInputEquation.getText().toString();
 

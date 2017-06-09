@@ -8,7 +8,16 @@
     tools:context=".ui.SolveActivity">
 
     <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/recyclerView"/>
+        android:layout_height="540dp" />
+
+    <Button
+        android:id="@+id/saveSolutionButton"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/recyclerView"
+        android:layout_centerHorizontal="true"
+        android:text="Save Solution" />
 </RelativeLayout>
