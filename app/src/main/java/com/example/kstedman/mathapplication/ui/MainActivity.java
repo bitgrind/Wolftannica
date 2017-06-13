@@ -130,12 +130,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void saveTopicToFirebase(String topic) {
-        mSearchedTopicReference.push().setValue(topic);
+//        mSearchedTopicReference.push().setValue(topic);
     }
-
-//    private void addToSharedPreferences(String equation){
-//        mEditor.putString(WolframConstants.PREFERENCES_TOPIC_KEY, "Math").apply();
-//    }
 
     @Override
     protected void onDestroy() {

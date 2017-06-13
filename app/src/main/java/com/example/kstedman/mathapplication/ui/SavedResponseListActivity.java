@@ -17,7 +17,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class SavedResponseListActivity extends AppCompatActivity {
-    private DatabaseReference mResponseReference;
+    private DatabaseReference mResponseRef;
     private FirebaseRecyclerAdapter mFirebaseAdapter;
 
     @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
@@ -25,16 +25,16 @@ public class SavedResponseListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_solve);
 
-        setContentView(R.layout.activity_response_detail);
         ButterKnife.bind(this);
 
-        mResponseReference = FirebaseDatabase.getInstance().getReference(WolframConstants.FIREBASE_CHILD_SEARCHED_TOPIC);
+        mResponseRef = FirebaseDatabase.getInstance().getReference(WolframConstants.FIREBASE_CHILD_QUESTIONS);
         setUpFirebaseAdapter();
     }
 
     private void setUpFirebaseAdapter() {
-        mFirebaseAdapter = new FirebaseRecyclerAdapter<WolframResponseModel, FirebaseResponseViewHolder>(WolframResponseModel.class, R.layout.solve_list_item, FirebaseResponseViewHolder.class, mResponseReference){
+        mFirebaseAdapter = new FirebaseRecyclerAdapter<WolframResponseModel, FirebaseResponseViewHolder> (WolframResponseModel.class, R.layout.solve_list_item, FirebaseResponseViewHolder.class, mResponseRef) {
             @Override
             protected void populateViewHolder(FirebaseResponseViewHolder viewHolder, WolframResponseModel model, int position) {
                 viewHolder.bindResponse(model);

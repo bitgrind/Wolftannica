@@ -24,7 +24,8 @@
         <activity android:name=".ui.ContactActivity" />
         <activity android:name=".ui.ResponseDetailActivity" />
         <activity android:name=".ui.SavedResponseListActivity" />
-        <activity android:name=".ui.CreateAccountActivity"></activity>
+        <activity android:name=".ui.CreateAccountActivity" />
+        <activity android:name=".ui.SavedRestaurantListActivity" />
     </application>
 
 </manifest>
