@@ -76,7 +76,7 @@
         android:layout_toStartOf="@+id/contactButton" />
 
     <Button
-        android:id="@+id/convertButton"
+        android:id="@+id/createButton"
         android:layout_width="98sp"
         android:layout_height="wrap_content"
         android:text="Convert"

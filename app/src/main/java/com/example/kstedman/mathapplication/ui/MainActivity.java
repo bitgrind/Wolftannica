@@ -27,7 +27,7 @@ import com.google.firebase.database.ValueEventListener;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     @Bind(R.id.solveEquationButton) Button mSolveEquationButton;
     @Bind(R.id.aboutButton) Button mAboutButton;
-    @Bind(R.id.convertButton) Button mConvertButton;
+    @Bind(R.id.createButton) Button mCreateButton;
     @Bind(R.id.contactButton) Button mContactButton;
     @Bind(R.id.signInButton) Button mSignInButton;
     @Bind(R.id.inputEquation) TextView mInputEquation;
@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mSolveEquationButton.setOnClickListener(this);
         mAboutButton.setOnClickListener(this);
         mContactButton.setOnClickListener(this);
-        mConvertButton.setOnClickListener(this);
+        mCreateButton.setOnClickListener(this);
         mSignInButton.setOnClickListener(this);
         mSavedSolutionButton.setOnClickListener(this);
     }
@@ -113,7 +113,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             startActivity(intent);
         }
 
-        if(v == mConvertButton) {
+        if(v == mCreateButton) {
             Intent intent = new Intent(MainActivity.this, CreateAccountActivity.class);
             startActivity(intent);
         }
