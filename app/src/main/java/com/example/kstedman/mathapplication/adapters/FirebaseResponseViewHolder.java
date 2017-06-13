@@ -57,6 +57,7 @@ public class FirebaseResponseViewHolder extends RecyclerView.ViewHolder implemen
             @Override
             public void onDataChange(DataSnapshot dataSnapshot){
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    Log.d("FirebaseViewHolderSnap", "Datasnapshot");
                     responses.add(snapshot.getValue(WolframResponseModel.class));
                 }
 

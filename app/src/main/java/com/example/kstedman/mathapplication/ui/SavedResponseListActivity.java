@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
 import com.example.kstedman.mathapplication.R;
 import com.example.kstedman.mathapplication.WolframConstants;
@@ -29,14 +30,17 @@ public class SavedResponseListActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
 
-        mResponseRef = FirebaseDatabase.getInstance().getReference(WolframConstants.FIREBASE_CHILD_QUESTIONS);
+        mResponseRef = FirebaseDatabase.getInstance().getReference().child("questions");
         setUpFirebaseAdapter();
+        Log.d("FirebaseReference", mResponseRef.toString());
     }
 
     private void setUpFirebaseAdapter() {
         mFirebaseAdapter = new FirebaseRecyclerAdapter<WolframResponseModel, FirebaseResponseViewHolder> (WolframResponseModel.class, R.layout.solve_list_item, FirebaseResponseViewHolder.class, mResponseRef) {
+
             @Override
             protected void populateViewHolder(FirebaseResponseViewHolder viewHolder, WolframResponseModel model, int position) {
+                Log.v("FirebaseViewHolderPOP", "Populate View Holder");
                 viewHolder.bindResponse(model);
             }
         };

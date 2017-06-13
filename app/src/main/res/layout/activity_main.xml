@@ -23,9 +23,9 @@
         android:text="Find Solution!"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="149dp"
+        android:layout_marginTop="37dp"
         android:layout_below="@+id/inputEquation"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="34dp" />
+        android:layout_centerHorizontal="true" />
 
     <EditText
         android:id="@+id/inputEquation"
@@ -62,6 +62,10 @@
         android:textAllCaps="false"
         android:textSize="50sp" />
 
+    signInButton
+
+
+
     <Button
         android:id="@+id/aboutButton"
         android:layout_width="98sp"
@@ -97,5 +101,14 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="27dp"
         android:text="Saved Questions" />
+
+    <Button
+        android:id="@+id/signInButton"
+        android:layout_width="98sp"
+        android:layout_height="wrap_content"
+        android:text="Sign In"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>

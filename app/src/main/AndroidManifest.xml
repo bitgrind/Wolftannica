@@ -25,7 +25,7 @@
         <activity android:name=".ui.ResponseDetailActivity" />
         <activity android:name=".ui.SavedResponseListActivity" />
         <activity android:name=".ui.CreateAccountActivity" />
-        <activity android:name=".ui.SavedRestaurantListActivity" />
+        <activity android:name=".ui.Login"></activity>
     </application>
 
 </manifest>

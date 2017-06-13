@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Bind(R.id.aboutButton) Button mAboutButton;
     @Bind(R.id.convertButton) Button mConvertButton;
     @Bind(R.id.contactButton) Button mContactButton;
-    @Bind(R.id.solveButton) Button mSolveButton;
+    @Bind(R.id.signInButton) Button mSignInButton;
     @Bind(R.id.inputEquation) TextView mInputEquation;
 
     @Bind(R.id.saveSolutionButton) Button mSavedSolutionButton;
@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mAboutButton.setOnClickListener(this);
         mContactButton.setOnClickListener(this);
         mConvertButton.setOnClickListener(this);
-        mSolveButton.setOnClickListener(this);
+        mSignInButton.setOnClickListener(this);
         mSavedSolutionButton.setOnClickListener(this);
     }
 
@@ -114,6 +114,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
         if(v == mConvertButton) {
+            Intent intent = new Intent(MainActivity.this, CreateAccountActivity.class);
+            startActivity(intent);
+        }
+
+        if(v == mSignInButton) {
             Intent intent = new Intent(MainActivity.this, CreateAccountActivity.class);
             startActivity(intent);
         }
