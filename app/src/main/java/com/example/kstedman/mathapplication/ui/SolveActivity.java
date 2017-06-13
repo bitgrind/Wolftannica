@@ -59,17 +59,13 @@ public class SolveActivity extends AppCompatActivity {
         String equation = intent.getStringExtra("question");
 
         getSolutions(equation, "Math");
-//        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-//        mRecentTopic = mSharedPreferences.getString(WolframConstants.PREFERENCES_TOPIC_KEY, null);
-//        Log.v("SetPrefTopicKey", mRecentTopic);
 
         mSaveSolution.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.d("SolveActivity","Add to Firebase");
                 DatabaseReference restaurantRef = FirebaseDatabase.getInstance().getReference(WolframConstants.FIREBASE_CHILD_QUESTIONS);
-                restaurantRef.push().setValue("saveQuestionModelHere");
-//                Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
+                restaurantRef.push().setValue(mResults);
             }
         });
     }
