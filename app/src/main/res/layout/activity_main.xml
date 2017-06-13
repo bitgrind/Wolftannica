@@ -79,7 +79,7 @@
         android:id="@+id/createButton"
         android:layout_width="98sp"
         android:layout_height="wrap_content"
-        android:text="Convert"
+        android:text="Sign Up"
         android:layout_alignParentBottom="true"
         android:layout_toLeftOf="@+id/aboutButton"
         android:layout_toStartOf="@+id/aboutButton" />
@@ -106,7 +106,7 @@
         android:id="@+id/signInButton"
         android:layout_width="98sp"
         android:layout_height="wrap_content"
-        android:text="Sign In"
+        android:text="Login"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
