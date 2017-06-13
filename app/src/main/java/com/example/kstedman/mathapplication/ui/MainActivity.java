@@ -114,12 +114,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
         if(v == mConvertButton) {
-            Intent intent = new Intent(MainActivity.this, ConvertActivity.class);
-            startActivity(intent);
-        }
-
-        if(v == mSolveButton) {
-            Intent intent = new Intent(MainActivity.this, MainActivity.class);
+            Intent intent = new Intent(MainActivity.this, CreateAccountActivity.class);
             startActivity(intent);
         }
 

@@ -81,15 +81,6 @@
         android:layout_toStartOf="@+id/aboutButton" />
 
     <Button
-        android:id="@+id/solveButton"
-        android:layout_width="98sp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_toLeftOf="@+id/convertButton"
-        android:layout_toStartOf="@+id/convertButton"
-        android:text="Solvr" />
-
-    <Button
         android:id="@+id/contactButton"
         android:layout_width="98sp"
         android:layout_height="wrap_content"
