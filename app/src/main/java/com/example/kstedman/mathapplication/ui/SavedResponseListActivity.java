@@ -11,6 +11,8 @@ import com.example.kstedman.mathapplication.WolframConstants;
 import com.example.kstedman.mathapplication.adapters.FirebaseResponseViewHolder;
 import com.example.kstedman.mathapplication.models.WolframResponseModel;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -29,6 +31,9 @@ public class SavedResponseListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_solve);
 
         ButterKnife.bind(this);
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String uid = user.getUid();
 
         mResponseRef = FirebaseDatabase.getInstance().getReference().child("questions");
         setUpFirebaseAdapter();

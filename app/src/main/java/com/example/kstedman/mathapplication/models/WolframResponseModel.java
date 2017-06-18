@@ -7,6 +7,7 @@ public class WolframResponseModel {
     String title;
     String value;
     String image;
+    private String pushId;
 
     public WolframResponseModel() {}
 
@@ -28,4 +29,11 @@ public class WolframResponseModel {
         return image;
     }
 
+    public String getPushId() {
+        return pushId;
+    }
+
+    public void setPushId(String pushId) {
+        this.pushId = pushId;
+    }
 }

@@ -20,6 +20,8 @@ import com.example.kstedman.mathapplication.adapters.WolframCustomAdapter;
 import com.example.kstedman.mathapplication.adapters.WolframListAdapter;
 import com.example.kstedman.mathapplication.models.WolframResponseModel;
 import com.example.kstedman.mathapplication.services.WolframService;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -45,6 +47,7 @@ public class SolveActivity extends AppCompatActivity {
     @Bind(R.id.saveSolutionButton) Button mSaveSolution;
 
     private WolframListAdapter mAdapter;
+    private WolframResponseModel mResponse = new WolframResponseModel();
     public ArrayList<WolframResponseModel> mResults = new ArrayList<>();
 
     @Override
@@ -64,8 +67,16 @@ public class SolveActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d("SolveActivity","Add to Firebase");
-                DatabaseReference restaurantRef = FirebaseDatabase.getInstance().getReference(WolframConstants.FIREBASE_CHILD_QUESTIONS);
-                restaurantRef.push().setValue(mResults);
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                String uid = user.getUid();
+
+                DatabaseReference responseRef = FirebaseDatabase.getInstance().getReference(WolframConstants.FIREBASE_CHILD_QUESTIONS).child(uid);
+                DatabaseReference pushRef = responseRef.push();
+                String pushId = pushRef.getKey();
+                mResponse.setPushId(pushId);
+                pushRef.setValue(mResponse);
+
+                responseRef.push().setValue(mResults);
             }
         });
     }

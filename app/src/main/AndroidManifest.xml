@@ -25,7 +25,11 @@
         <activity android:name=".ui.ResponseDetailActivity" />
         <activity android:name=".ui.SavedResponseListActivity" />
         <activity android:name=".ui.CreateAccountActivity" />
-        <activity android:name=".ui.LoginActivity"></activity>
+        <activity android:name=".ui.LoginActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.MainActivity" />
+        </activity>
     </application>
 
 </manifest>
