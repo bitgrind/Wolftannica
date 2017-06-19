@@ -12,11 +12,14 @@ import android.widget.Toast;
 
 import com.example.kstedman.mathapplication.R;
 import com.example.kstedman.mathapplication.WolframConstants;
+import com.example.kstedman.mathapplication.models.WolframPushModel;
 import com.example.kstedman.mathapplication.models.WolframResponseModel;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import org.parceler.Parcels;
+
+import java.util.ArrayList;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -58,6 +61,8 @@ public class ResponseDetailFragment extends Fragment implements View.OnClickList
         ButterKnife.bind(this, view);
 
         Log.v("detail frag", "this is where we set text");
+//        ArrayList<WolframResponseModel> responseArray = response.getResponseArray();
+
         mResponseValue.setText(mResponseModel.getValue());
         mResponseTitle.setText(mResponseModel.getTitle());
 

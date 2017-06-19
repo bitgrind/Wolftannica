@@ -9,6 +9,7 @@ import android.util.Log;
 import com.example.kstedman.mathapplication.R;
 import com.example.kstedman.mathapplication.WolframConstants;
 import com.example.kstedman.mathapplication.adapters.FirebaseResponseViewHolder;
+import com.example.kstedman.mathapplication.models.WolframPushModel;
 import com.example.kstedman.mathapplication.models.WolframResponseModel;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.auth.FirebaseAuth;
@@ -28,23 +29,24 @@ public class SavedResponseListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_solve);
 
+        setContentView(R.layout.activity_solve);
         ButterKnife.bind(this);
 
+        //Get Current User Id
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String uid = user.getUid();
 
-        mResponseRef = FirebaseDatabase.getInstance().getReference().child("questions");
+        mResponseRef = FirebaseDatabase.getInstance().getReference(WolframConstants.FIREBASE_CHILD_QUESTIONS).child(uid);
         setUpFirebaseAdapter();
         Log.d("FirebaseReference", mResponseRef.toString());
     }
 
     private void setUpFirebaseAdapter() {
-        mFirebaseAdapter = new FirebaseRecyclerAdapter<WolframResponseModel, FirebaseResponseViewHolder> (WolframResponseModel.class, R.layout.solve_list_item, FirebaseResponseViewHolder.class, mResponseRef) {
+        mFirebaseAdapter = new FirebaseRecyclerAdapter<WolframPushModel, FirebaseResponseViewHolder> (WolframPushModel.class, R.layout.solve_list_item, FirebaseResponseViewHolder.class, mResponseRef) {
 
             @Override
-            protected void populateViewHolder(FirebaseResponseViewHolder viewHolder, WolframResponseModel model, int position) {
+            protected void populateViewHolder(FirebaseResponseViewHolder viewHolder, WolframPushModel model, int position) {
                 Log.v("FirebaseViewHolderPOP", "Populate View Holder");
                 viewHolder.bindResponse(model);
             }

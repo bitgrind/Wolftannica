@@ -7,7 +7,7 @@ public class WolframResponseModel {
     String title;
     String value;
     String image;
-    private String pushId;
+    String pushId;
 
     public WolframResponseModel() {}
 

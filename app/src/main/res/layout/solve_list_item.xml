@@ -27,7 +27,7 @@
             android:textStyle="italic"/>
 
     <ImageView
-        android:layout_width="50dp"
+        android:layout_width="match_parent"
         android:layout_height="50dp"
         android:id="@+id/solveImageView"
         android:layout_below="@+id/solveTitleView"/>

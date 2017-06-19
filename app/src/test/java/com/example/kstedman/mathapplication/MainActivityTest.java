@@ -36,19 +36,19 @@ public class MainActivityTest {
 
     @Test
     public void validateSolvrButtonContent() {
-        TextView appNameTitle = (TextView) activity.findViewById(R.id.solveButton);
+        TextView appNameTitle = (TextView) activity.findViewById(R.id.solveEquationButton);
         assertTrue("Solvr".equals(appNameTitle.getText().toString()));
     }
 
     @Test
     public void validateContactButtonContent() {
-        TextView appNameTitle = (TextView) activity.findViewById(R.id.contactbutton);
+        TextView appNameTitle = (TextView) activity.findViewById(R.id.contactButton);
         assertTrue("Contact".equals(appNameTitle.getText().toString()));
     }
 
     @Test
     public void validateConvertButtonContent() {
-        TextView appNameTitle = (TextView) activity.findViewById(R.id.convertButton);
+        TextView appNameTitle = (TextView) activity.findViewById(R.id.createButton);
         assertTrue("Convert".equals(appNameTitle.getText().toString()));
     }
 
@@ -87,7 +87,7 @@ public class MainActivityTest {
 
     @Test
     public void convertActivityStarted() {
-        activity.findViewById(R.id.convertButton).performClick();
+        activity.findViewById(R.id.createButton).performClick();
         Intent expectedIntent = new Intent(activity, SolveActivity.class);
         ShadowActivity shadowActivity = org.robolectric.Shadows.shadowOf(activity);
         Intent actualIntent = shadowActivity.getNextStartedActivity();

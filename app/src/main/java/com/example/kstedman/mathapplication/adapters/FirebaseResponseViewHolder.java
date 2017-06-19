@@ -9,10 +9,12 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import org.json.JSONException;
 import org.parceler.Parcels;
 
 import com.example.kstedman.mathapplication.R;
 import com.example.kstedman.mathapplication.WolframConstants;
+import com.example.kstedman.mathapplication.models.WolframPushModel;
 import com.example.kstedman.mathapplication.models.WolframResponseModel;
 import com.example.kstedman.mathapplication.ui.ResponseDetailActivity;
 import com.google.firebase.database.DataSnapshot;
@@ -22,6 +24,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class FirebaseResponseViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -38,15 +41,20 @@ public class FirebaseResponseViewHolder extends RecyclerView.ViewHolder implemen
         itemView.setOnClickListener(this);
     }
 
-    public void bindResponse(WolframResponseModel response) {
+    public void bindResponse(WolframPushModel response) {
+        Log.d("FirebaseViewHolder", "This is the Bind Response"+response);
+
         ImageView responseImage = (ImageView) mView.findViewById(R.id.solveImageView);
         TextView titleTextView = (TextView) mView.findViewById(R.id.solveTitleView);
         TextView valueTextView = (TextView) mView.findViewById(R.id.solveValueView);
 
-        Picasso.with(mContext).load(response.getImage()).resize(MAX_WIDTH,MAX_HEIGHT).centerCrop().into(responseImage);
+//        Picasso.with(mContext).load(response.getImage()).resize(MAX_WIDTH,MAX_HEIGHT).centerCrop().into(responseImage);
+//        JSONObject queryResultJSON = wolframJSON.getJSONObject("queryresult");
+//        JSONArray responseArray = queryResultJSON.getJSONArray("pods");
 
-        titleTextView.setText(response.getTitle());
-        valueTextView.setText(response.getValue());
+        ArrayList<WolframResponseModel> responseArray = response.getResponseArray();
+        titleTextView.setText(response.getPushId());
+        valueTextView.setText(responseArray.get(0).getValue());
     }
 
     @Override

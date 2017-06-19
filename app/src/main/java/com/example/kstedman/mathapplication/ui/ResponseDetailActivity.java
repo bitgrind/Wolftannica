@@ -7,6 +7,7 @@ import android.util.Log;
 
 import com.example.kstedman.mathapplication.R;
 import com.example.kstedman.mathapplication.adapters.ResponsePagerAdapter;
+import com.example.kstedman.mathapplication.models.WolframPushModel;
 import com.example.kstedman.mathapplication.models.WolframResponseModel;
 
 import org.parceler.Parcels;
@@ -30,9 +31,9 @@ public class ResponseDetailActivity extends AppCompatActivity {
 
         mResponses = Parcels.unwrap(getIntent().getParcelableExtra("response"));
 
-        Log.d("mResponseParcels", mResponses.toString());
+//        Log.d("mResponseParcels", mResponses.toString());
 
-        int startingPosition = Integer.parseInt(getIntent().getStringExtra("positionNum"));
+        int startingPosition = 0;
 
         Log.v("DetailActivityIntentNum", Integer.toString(startingPosition));
 
