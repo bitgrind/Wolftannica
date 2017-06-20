@@ -29,11 +29,9 @@ public class ResponseDetailActivity extends AppCompatActivity {
         Log.v("ResponseDetail", "This is the Response Detail Activity");
         ButterKnife.bind(this);
 
+        int startingPosition = getIntent().getIntExtra("position", 0);
+
         mResponses = Parcels.unwrap(getIntent().getParcelableExtra("response"));
-
-//        Log.d("mResponseParcels", mResponses.toString());
-
-        int startingPosition = 0;
 
         Log.v("DetailActivityIntentNum", Integer.toString(startingPosition));
 
