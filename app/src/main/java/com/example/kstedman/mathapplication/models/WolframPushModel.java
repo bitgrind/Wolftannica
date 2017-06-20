@@ -7,6 +7,7 @@ import org.parceler.Parcel;
 @Parcel
 public class WolframPushModel {
     String pushId;
+    String index;
     ArrayList<WolframResponseModel> responseArray = new ArrayList<>();
 
     public WolframPushModel(){}
@@ -14,6 +15,15 @@ public class WolframPushModel {
     public WolframPushModel(ArrayList<WolframResponseModel> responseArray, String uid) {
         this.pushId = uid;
         this.responseArray = responseArray;
+        this.index = "not_specified";
+    }
+
+    public String getIndex() {
+        return index;
+    }
+
+    public void setIndex(String index) {
+        this.index = index;
     }
 
     public String getPushId() {

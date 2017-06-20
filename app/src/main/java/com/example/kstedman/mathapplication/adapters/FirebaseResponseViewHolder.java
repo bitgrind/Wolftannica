@@ -33,6 +33,7 @@ public class FirebaseResponseViewHolder extends RecyclerView.ViewHolder implemen
 
     View mView;
     Context mContext;
+    public ImageView mResponseImageView;
 
     public FirebaseResponseViewHolder(View itemView) {
         super(itemView);
@@ -41,8 +42,10 @@ public class FirebaseResponseViewHolder extends RecyclerView.ViewHolder implemen
         itemView.setOnClickListener(this);
     }
 
-    public void bindResponse(WolframPushModel response) {
-        Log.d("FirebaseViewHolder", "This is the Bind Response"+response);
+    public void bindResponse(WolframPushModel model) {
+        Log.d("FirebaseViewHolder", "This is the Bind Response"+model);
+
+        mResponseImageView = (ImageView) mView.findViewById(R.id.responseImageView);
 
         ImageView responseImage = (ImageView) mView.findViewById(R.id.solveImageView);
         TextView titleTextView = (TextView) mView.findViewById(R.id.solveTitleView);
@@ -52,8 +55,8 @@ public class FirebaseResponseViewHolder extends RecyclerView.ViewHolder implemen
 //        JSONObject queryResultJSON = wolframJSON.getJSONObject("queryresult");
 //        JSONArray responseArray = queryResultJSON.getJSONArray("pods");
 
-        ArrayList<WolframResponseModel> responseArray = response.getResponseArray();
-        titleTextView.setText(response.getPushId());
+        ArrayList<WolframResponseModel> responseArray = model.getResponseArray();
+        titleTextView.setText(model.getPushId());
         valueTextView.setText(responseArray.get(0).getValue());
     }
 
