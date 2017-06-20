@@ -7,6 +7,12 @@
     android:layout_height="match_parent"
     tools:context="com.example.kstedman.mathapplication.ui.AboutActivity">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true">
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
@@ -67,4 +73,10 @@
         android:layout_marginTop="28dp"
         android:text="Further Exploration"
         android:textSize="24sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
 </RelativeLayout>
