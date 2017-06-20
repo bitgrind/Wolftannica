@@ -2,6 +2,9 @@ package com.example.kstedman.mathapplication.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.RecyclerView;
 import android.text.Layout;
 import android.util.Log;
@@ -12,8 +15,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.kstedman.mathapplication.R;
+import com.example.kstedman.mathapplication.models.WolframPushModel;
 import com.example.kstedman.mathapplication.models.WolframResponseModel;
 import com.example.kstedman.mathapplication.ui.ResponseDetailActivity;
+import com.example.kstedman.mathapplication.ui.ResponseDetailFragment;
 import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
@@ -54,7 +59,16 @@ public class WolframListAdapter extends RecyclerView.Adapter<WolframListAdapter.
         @Bind(R.id.solveTitleView) TextView mSolveTitle;
         @Bind(R.id.solveImageView) ImageView mSolveImage;
 
+        private int mOrientation;
+
         private Context mContext;
+
+        private void createDetailFragment(int position){
+            ResponseDetailFragment detailFragment = ResponseDetailFragment.newInstance(mResponses, position);
+            FragmentTransaction ft = ((FragmentActivity) mContext).getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.responseDetailContainer, detailFragment);
+            ft.commit();
+        }
 
         public WolframViewHolder(View itemView) {
             super(itemView);
@@ -62,6 +76,11 @@ public class WolframListAdapter extends RecyclerView.Adapter<WolframListAdapter.
 
             mContext = itemView.getContext();
             itemView.setOnClickListener(this);
+
+            mOrientation = itemView.getResources().getConfiguration().orientation;
+            if(mOrientation == Configuration.ORIENTATION_LANDSCAPE){
+                createDetailFragment(0);
+            }
         }
 
         public void bindWolframResponse(WolframResponseModel responseModel) {

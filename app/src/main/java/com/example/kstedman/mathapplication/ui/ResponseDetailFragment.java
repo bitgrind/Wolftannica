@@ -14,6 +14,8 @@ import com.example.kstedman.mathapplication.R;
 import com.example.kstedman.mathapplication.WolframConstants;
 import com.example.kstedman.mathapplication.models.WolframPushModel;
 import com.example.kstedman.mathapplication.models.WolframResponseModel;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -36,14 +38,17 @@ public class ResponseDetailFragment extends Fragment implements View.OnClickList
     @Bind(R.id.step3ValueText) TextView mResponseStep3Value;
     @Bind(R.id.saveSolutionButton) Button mSaveSolutionButton;
 
-    private WolframResponseModel mResponseModel;
+    private WolframPushModel mResponse;
+    private ArrayList<WolframResponseModel> mResponses;
+    private int mPosition;
 
-    public static ResponseDetailFragment newInstance(WolframResponseModel wolframModel) {
+    public static ResponseDetailFragment newInstance(ArrayList<WolframResponseModel> responses, Integer position) {
         ResponseDetailFragment responseDetailFragment = new ResponseDetailFragment();
         Bundle args = new Bundle();
-        args.putParcelable("wolfarmModel", Parcels.wrap(wolframModel));
-        responseDetailFragment.setArguments(args);
+        args.putParcelable(WolframConstants.EXTRA_KEY_RESPONSES, Parcels.wrap(responses));
+        args.putInt(WolframConstants.EXTRA_KEY_POSITION, position);
 
+        responseDetailFragment.setArguments(args);
         return responseDetailFragment;
     }
 
@@ -51,20 +56,19 @@ public class ResponseDetailFragment extends Fragment implements View.OnClickList
     public void onCreate(Bundle savedInstanceState) {
         Log.d("SolutionDetail", "Solution Detail onCreate");
         super.onCreate(savedInstanceState);
-        mResponseModel = Parcels.unwrap(getArguments().getParcelable("wolframModel"));
+        mResponses = Parcels.unwrap(getArguments().getParcelable(WolframConstants.EXTRA_KEY_RESPONSES));
+        mPosition = getArguments().getInt(WolframConstants.EXTRA_KEY_POSITION);
+        mResponse = mResponse;
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_response_detail, container, false);
         ButterKnife.bind(this, view);
 
         Log.v("detail frag", "this is where we set text");
-//        ArrayList<WolframResponseModel> responseArray = response.getResponseArray();
-
-        mResponseValue.setText(mResponseModel.getValue());
-        mResponseTitle.setText(mResponseModel.getTitle());
+//        mResponseValue.setText(responseArray.getValue());
+//        mResponseTitle.setText(responseArray.getTitle());
 
         mSaveSolutionButton.setOnClickListener(this);
 
@@ -74,9 +78,17 @@ public class ResponseDetailFragment extends Fragment implements View.OnClickList
     @Override
     public void onClick(View v){
         if(v == mSaveSolutionButton){
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            String uid = user.getUid();
+
             Log.d("SaveSolution", "Save Solution");
-            DatabaseReference questionRef = FirebaseDatabase.getInstance().getReference(WolframConstants.FIREBASE_CHILD_QUESTIONS);
-            questionRef.push().setValue(mResponseModel);
+            DatabaseReference questionRef = FirebaseDatabase.getInstance().getReference(WolframConstants.FIREBASE_CHILD_QUESTIONS).child(uid);
+            DatabaseReference pushRef = questionRef.push();
+            String pushId = pushRef.getKey();
+            mResponse.setPushId(pushId);
+
+            pushRef.setValue(mResponse);
+
             Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
         }
     }

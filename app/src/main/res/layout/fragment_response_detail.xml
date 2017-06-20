@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.ResponseDetailFragment">
+    tools:context="com.example.kstedman.mathapplication.ui.ResponseDetailFragment">
 
     <LinearLayout
         android:orientation="vertical"
@@ -36,7 +36,6 @@
                 android:textSize="20sp"
                 android:textColor="@color/colorPrimaryDark"
                 android:textStyle="bold" />
-
 
             <TextView
                 android:layout_width="wrap_content"
@@ -150,5 +149,4 @@
                 android:textSize="15sp" />
         </RelativeLayout>
     </LinearLayout>
-
 </FrameLayout>

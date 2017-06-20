@@ -3,6 +3,7 @@ package com.example.kstedman.mathapplication.adapters;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v4.view.MotionEventCompat;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -30,6 +31,7 @@ public class FirebaseResponseListAdapter extends FirebaseRecyclerAdapter<Wolfram
 
     private ChildEventListener mChildEventListener;
     private ArrayList<WolframPushModel> mResponses = new ArrayList<>();
+    private WolframPushModel pushModel = new WolframPushModel();
 
     public FirebaseResponseListAdapter(Class<WolframPushModel> modelClass, int modelLayout, Class<FirebaseResponseViewHolder> veiwHolderClass, Query ref, OnStartDragListener onStartDragListener, Context context) {
         super(modelClass, modelLayout, veiwHolderClass, ref);
@@ -66,7 +68,7 @@ public class FirebaseResponseListAdapter extends FirebaseRecyclerAdapter<Wolfram
     }
 
     @Override
-    protected void populateViewHolder(final FirebaseResponseViewHolder viewHolder, WolframPushModel model, int position) {
+    protected void populateViewHolder(final FirebaseResponseViewHolder viewHolder, WolframPushModel model, final int position) {
         viewHolder.bindResponse(model);
         viewHolder.mResponseImageView.setOnTouchListener(new View.OnTouchListener() {
            @Override
@@ -83,8 +85,9 @@ public class FirebaseResponseListAdapter extends FirebaseRecyclerAdapter<Wolfram
             public void onClick(View v) {
                 Intent intent = new Intent(mContext, ResponseDetailActivity.class);
                 intent.putExtra("position", viewHolder.getAdapterPosition());
-                intent.putExtra("response", Parcels.wrap(mResponses));
-                mContext.startActivity(intent);
+                intent.putExtra("responseArray", Parcels.wrap(mResponses));
+                Log.d("FirebaseListAdapter", Parcels.wrap(mResponses).toString());
+//                mContext.startActivity(intent);
             }
         });
     }

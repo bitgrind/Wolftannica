@@ -13,26 +13,27 @@ import com.example.kstedman.mathapplication.ui.ResponseDetailFragment;
 import java.util.ArrayList;
 
 public class ResponsePagerAdapter extends FragmentPagerAdapter {
-    private ArrayList<WolframResponseModel> mReponse;
+    private ArrayList<WolframResponseModel> mReponses;
+    private WolframResponseModel model = new WolframResponseModel();
 
     public ResponsePagerAdapter(FragmentManager fm, ArrayList<WolframResponseModel> responses) {
         super(fm);
-        mReponse = responses;
+        mReponses = responses;
         Log.v("pagerAdapter", "page adapter loading");
     }
 
     @Override
     public Fragment getItem(int position) {
-        return ResponseDetailFragment.newInstance(mReponse.get(position));
+        return ResponseDetailFragment.newInstance(mReponses, position);
     }
 
     @Override
     public int getCount() {
-        return mReponse.size();
+        return mReponses.size();
     }
 
     @Override
     public CharSequence getPageTitle(int position) {
-        return mReponse.get(position).getTitle();
+        return "Title Page Adapter";
     }
 }

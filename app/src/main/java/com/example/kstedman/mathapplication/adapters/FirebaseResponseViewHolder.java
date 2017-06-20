@@ -55,7 +55,7 @@ public class FirebaseResponseViewHolder extends RecyclerView.ViewHolder implemen
 //        JSONArray responseArray = queryResultJSON.getJSONArray("pods");
 
         ArrayList<WolframResponseModel> responseArray = model.getResponseArray();
-        titleTextView.setText(model.getPushId());
+        titleTextView.setText(responseArray.get(0).getTitle());
         valueTextView.setText(responseArray.get(0).getValue());
     }
 

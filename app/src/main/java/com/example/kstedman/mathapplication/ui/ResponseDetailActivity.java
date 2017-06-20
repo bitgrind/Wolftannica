@@ -31,7 +31,7 @@ public class ResponseDetailActivity extends AppCompatActivity {
 
         int startingPosition = getIntent().getIntExtra("position", 0);
 
-        mResponses = Parcels.unwrap(getIntent().getParcelableExtra("response"));
+        mResponses = Parcels.unwrap(getIntent().getParcelableExtra("responseArray"));
 
         Log.v("DetailActivityIntentNum", Integer.toString(startingPosition));
 
