@@ -66,7 +66,7 @@ public class WolframListAdapter extends RecyclerView.Adapter<WolframListAdapter.
         private void createDetailFragment(int position){
             ResponseDetailFragment detailFragment = ResponseDetailFragment.newInstance(mResponses, position);
             FragmentTransaction ft = ((FragmentActivity) mContext).getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.responseDetailContainer, detailFragment);
+//            ft.replace(R.id.responseDetailContainer, detailFragment);
             ft.commit();
         }
 

@@ -19,6 +19,7 @@ import butterknife.ButterKnife;
 
 import android.graphics.Typeface;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.kstedman.mathapplication.R;
 import com.example.kstedman.mathapplication.WolframConstants;
@@ -41,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Bind(R.id.saveSolutionButton) Button mSavedSolutionButton;
 
     private TextView mPageTitle;
-
+    private String mathEquation;
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
 
@@ -107,20 +108,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         Log.v("MainActivity Click", v.toString());
-        Log.v("PrefTopicKey", WolframConstants.PREFERENCES_TOPIC_KEY);
-
         if(v == mSolveEquationButton) {
-            String mathEquation = mInputEquation.getText().toString();
-
-            saveTopicToFirebase(mathEquation);
+            mathEquation = mInputEquation.getText().toString();
+            if(mathEquation.equals("")){
+                Log.d("MainActivity", "no question");
+                Toast.makeText(MainActivity.this, "Ask A Question", Toast.LENGTH_SHORT).show();
+            } else {
+                saveTopicToFirebase(mathEquation);
+                Intent intent = new Intent(MainActivity.this, SolveActivity.class);
+                intent.putExtra("question", mathEquation);
+                startActivity(intent);
+            }
 
 //            if(!(mathEquation).equals("")) {
 //                addToSharedPreferences(mathEquation);
 //            }
-
-            Intent intent = new Intent(MainActivity.this, SolveActivity.class);
-            intent.putExtra("question", mathEquation);
-            startActivity(intent);
         }
 
         if(v == mAboutButton) {
