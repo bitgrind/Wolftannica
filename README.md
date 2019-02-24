@@ -33,3 +33,6 @@ I would like to build out maybe a visual map of different basic equations, maybe
 
 #### Created By Keith Stedman
 This is a MIT License and is free to use.   
+
+
+# PLEASE EMAIL ME USER THAT HAS BEEN USING MY API KEY! Nothing is wrong, I was looking into my Wolfram account to remake this app in NODE.js and saw activity and would like to talk about it! keithstedman@gmail.com, thanks
